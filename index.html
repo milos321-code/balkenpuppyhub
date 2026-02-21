@@ -20,7 +20,10 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html { scroll-behavior: smooth; }
+  html { 
+    scroll-behavior: smooth;
+    height: 100%;
+  }
 
   body {
     background: var(--dark);
@@ -28,28 +31,8 @@
     font-family: 'Jost', sans-serif;
     font-weight: 300;
     overflow-x: hidden;
-    cursor: none;
-  }
-
-  /* Custom cursor */
-  .cursor {
-    width: 8px; height: 8px;
-    background: var(--gold);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.1s ease;
-  }
-  .cursor-follower {
-    width: 32px; height: 32px;
-    border: 1px solid var(--gold);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9998;
-    transition: all 0.15s ease;
-    opacity: 0.5;
+    margin: 0;
+    padding: 0;
   }
 
   /* NAV */
@@ -896,7 +879,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 100px;
     align-items: start;
-    padding: 60px 60px 20px;
+    padding: 60px 60px 0px;
   }
 
   .contact-info {}
@@ -1007,11 +990,12 @@
   /* FOOTER */
   footer {
     background: var(--dark-mid);
-    padding: 30px 60px;
+    padding: 20px 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-top: 1px solid rgba(201,168,76,0.1);
+    margin-top: -50px;
   }
 
   .footer-logo {
@@ -1096,9 +1080,6 @@
 </style>
 </head>
 <body>
-
-<div class="cursor" id="cursor"></div>
-<div class="cursor-follower" id="cursorFollower"></div>
 
 <!-- NAV -->
 <nav>
@@ -1369,20 +1350,6 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// Custom cursor
-const cursor = document.getElementById('cursor');
-const cursorFollower = document.getElementById('cursorFollower');
-
-document.addEventListener('mousemove', (e) => {
-  cursor.style.left = e.clientX + 'px';
-  cursor.style.top = e.clientY + 'px';
-
-  setTimeout(() => {
-    cursorFollower.style.left = e.clientX - 15 + 'px';
-    cursorFollower.style.top = e.clientY - 15 + 'px';
-  }, 100);
-});
-
 // Scroll reveal
 const revealElements = document.querySelectorAll('.reveal');
 const revealOnScroll = () => {
@@ -1606,99 +1573,3 @@ document.getElementById('lightbox').addEventListener('click', function(e) {
 </script>
 
 </body>
-</html><div class="faq-toggle">+</div>
-      </div>
-      <div class="faq-answer">
-        <p>All breeding dogs undergo hip and elbow evaluations, genetic health panels, and full veterinary health checks. We provide complete documentation with every puppy.</p>
-      </div>
-    </div>
-
-    <div class="faq-item reveal" onclick="toggleFaq(this)">
-      <div class="faq-question">
-        <h3>How do I reserve a puppy?</h3>
-        <div class="faq-toggle">+</div>
-      </div>
-      <div class="faq-answer">
-        <p>Use the contact form or reach out directly. We typically require a deposit to secure a spot on the waitlist. Puppies are placed based on temperament match and family lifestyle.</p>
-      </div>
-    </div>
-
-    <div class="faq-item reveal" onclick="toggleFaq(this)">
-      <div class="faq-question">
-        <h3>Can I visit the kennel in Novi Sad?</h3>
-        <div class="faq-toggle">+</div>
-      </div>
-      <div class="faq-answer">
-        <p>Absolutely. We welcome visits to our kennel in Novi Sad, Serbia. Many of our US clients have visited in person before purchasing. We can assist with local accommodation recommendations.</p>
-      </div>
-    </div>
-
-    <div class="faq-item reveal" onclick="toggleFaq(this)">
-      <div class="faq-question">
-        <h3>What is the price range for your puppies?</h3>
-        <div class="faq-toggle">+</div>
-      </div>
-      <div class="faq-answer">
-        <p>Pricing varies depending on bloodlines, gender, and show/pet quality. Contact us directly for current pricing. All prices include full documentation and health guarantees.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Custom cursor
-  const cursor = document.getElementById('cursor');
-  const follower = document.getElementById('cursorFollower');
-  let mx = 0, my = 0, fx = 0, fy = 0;
-
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cursor.style.left = mx - 4 + 'px';
-    cursor.style.top = my - 4 + 'px';
-  });
-
-  function animateFollower() {
-    fx += (mx - fx) * 0.12;
-    fy += (my - fy) * 0.12;
-    follower.style.left = fx - 16 + 'px';
-    follower.style.top = fy - 16 + 'px';
-    requestAnimationFrame(animateFollower);
-  }
-  animateFollower();
-
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
-
-  // FAQ toggle
-  function toggleFaq(el) {
-    const isOpen = el.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) el.classList.add('open');
-  }
-
-  // Formspree form submit
-  const form = document.getElementById('contactForm');
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const btn = form.querySelector('.form-submit');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-    const data = new FormData(form);
-    const response = await fetch(form.action, {
-      method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    });
-    if (response.ok) {
-      form.reset();
-      document.getElementById('formSuccess').style.
