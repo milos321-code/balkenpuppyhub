@@ -305,7 +305,7 @@
 
   /* SECTION COMMON */
   section {
-    padding: 120px 60px;
+    padding: 60px 60px;
   }
 
   .section-eyebrow {
@@ -342,6 +342,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 100px;
     align-items: center;
+    padding: 60px 60px;
   }
 
   .about-image {
@@ -421,7 +422,10 @@
   }
 
   /* PUPPIES */
-  .puppies { background: var(--dark); }
+  .puppies { 
+    background: var(--dark);
+    padding: 40px 60px 60px;
+  }
 
   .puppies-header {
     display: flex;
@@ -637,7 +641,10 @@
   }
 
   /* FAQ */
-  .faq { background: var(--dark-mid); }
+  .faq { 
+    background: var(--dark-mid);
+    padding: 60px 60px;
+  }
 
   .faq-grid {
     display: grid;
@@ -715,6 +722,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 100px;
     align-items: start;
+    padding: 60px 60px;
   }
 
   .contact-info {}
@@ -898,7 +906,7 @@
     .nav-links { display: none; }
     .hero { padding: 100px 24px 60px; }
     .hero-image-block { display: none; }
-    section { padding: 80px 24px; }
+    section { padding: 40px 24px; }
     .stats-bar { grid-template-columns: repeat(2, 1fr); padding: 40px 24px; }
     .stat { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.1); }
     .about, .contact { grid-template-columns: 1fr; gap: 50px; padding: 80px 24px; }
@@ -924,7 +932,6 @@
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#puppies">Available</a></li>
-    <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -1098,76 +1105,6 @@
 <!-- GALLERY REMOVED - More space for puppies -->
 
 <!-- TESTIMONIALS REMOVED - Will be added when real references are available -->
-
-<!-- FAQ -->
-<section class="faq" id="faq">
-  <div class="reveal" style="text-align:center; max-width: 600px; margin: 0 auto 20px;">
-    <div class="section-eyebrow" style="justify-content:center;">FAQ</div>
-    <h2 class="section-title">Common Questions</h2>
-  </div>
-
-  <div class="faq-grid">
-    <div class="faq-item reveal" onclick="toggleFaq(this)">
-      <div class="faq-question">
-        <h3>How does importing a dog from Serbia work?</h3>
-        <div class="faq-toggle">+</div>
-      </div>
-      <div class="faq-answer">
-        <p>All dogs come with full KSS/FCI export pedigrees, health certificates, vaccination records, and microchip documentation. We handle all paperwork and can arrange shipping or personal delivery to the US.</p>
-      </div>
-    </div>
-
-    <div class="faq-item reveal" onclick="toggleFaq(this)">
-      <div class="faq-question">
-        <h3>Are your dogs AKC registerable?</h3>
-        <div class="faq-toggle">+</div>
-      </div>
-      <div class="faq-answer">
-        <p>Yes. Since KSS is an FCI-affiliated kennel club, AKC accepts our export pedigrees for registration in the United States through their foreign dog registration pathway.</p>
-      </div>
-    </div>
-
-    <div class="faq-item reveal" onclick="toggleFaq(this)">
-      <div class="faq-question">
-        <h3>What health testing do you perform?</h3>
-        <div class="faq-toggle">+</div>
-      </div>
-      <div class="faq-answer">
-        <p>All breeding dogs undergo comprehensive health testing including hip and elbow evaluations, genetic screening, and regular veterinary check-ups to ensure only the healthiest bloodlines.</p>
-      </div>
-    </div>
-
-    <div class="faq-item reveal" onclick="toggleFaq(this)">
-      <div class="faq-question">
-        <h3>What is included with each puppy?</h3>
-        <div class="faq-toggle">+</div>
-      </div>
-      <div class="faq-answer">
-        <p>Every puppy comes with FCI/KSS registration papers, full health certificate, vaccination records, microchip, export pedigree, and lifetime breeder support.</p>
-      </div>
-    </div>
-
-    <div class="faq-item reveal" onclick="toggleFaq(this)">
-      <div class="faq-question">
-        <h3>How much does shipping cost?</h3>
-        <div class="faq-toggle">+</div>
-      </div>
-      <div class="faq-answer">
-        <p>Shipping costs vary depending on destination and method. We offer both cargo shipping and personal delivery options. Contact us for a detailed quote based on your location.</p>
-      </div>
-    </div>
-
-    <div class="faq-item reveal" onclick="toggleFaq(this)">
-      <div class="faq-question">
-        <h3>Can I visit your kennel in Serbia?</h3>
-        <div class="faq-toggle">+</div>
-      </div>
-      <div class="faq-answer">
-        <p>Absolutely! We welcome visitors to our facility in Novi Sad. You can meet the parents, see our breeding operation, and spend time with the puppies before making your decision.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
@@ -1378,8 +1315,14 @@ const puppyData = {
 };
 
 function openModal(puppyId) {
+  console.log('Opening modal for:', puppyId); // Debug log
   const modal = document.getElementById('puppyModal');
   const puppy = puppyData[puppyId];
+  
+  if (!puppy) {
+    console.error('Puppy not found:', puppyId);
+    return;
+  }
   
   document.getElementById('modalTitle').textContent = puppy.name;
   document.getElementById('modalSubtitle').textContent = puppy.subtitle;
