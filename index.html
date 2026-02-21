@@ -330,6 +330,18 @@
 
   .about-image {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .about-image-top,
+  .about-image-bottom {
+    width: 100%;
+    height: 265px;
+    object-fit: cover;
+    filter: sepia(15%) contrast(1.05);
+    display: block;
   }
 
   .about-image-main {
@@ -1140,7 +1152,8 @@
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-image reveal">
-    <img class="about-image-main" src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=700&q=80" alt="Dragomir Petrovic with dogs" onerror="this.parentElement.style.display='none'">
+    <img class="about-image-top" src="images/WhatsApp Image 2026-02-20 at 23.04.16.jpeg" alt="Mother with puppies">
+    <img class="about-image-bottom" src="images/WhatsApp Image 2026-02-20 at 23.05.15.jpeg" alt="Puppies feeding">
     <div class="about-image-accent">
       <span>KSS</span>
       <span>FCI Registered Kennel</span>
