@@ -1133,6 +1133,296 @@
         <div class="faq-toggle">+</div>
       </div>
       <div class="faq-answer">
+        <p>All breeding dogs undergo comprehensive health testing including hip and elbow evaluations, genetic screening, and regular veterinary check-ups to ensure only the healthiest bloodlines.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        <h3>What is included with each puppy?</h3>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-answer">
+        <p>Every puppy comes with FCI/KSS registration papers, full health certificate, vaccination records, microchip, export pedigree, and lifetime breeder support.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        <h3>How much does shipping cost?</h3>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-answer">
+        <p>Shipping costs vary depending on destination and method. We offer both cargo shipping and personal delivery options. Contact us for a detailed quote based on your location.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        <h3>Can I visit your kennel in Serbia?</h3>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-answer">
+        <p>Absolutely! We welcome visitors to our facility in Novi Sad. You can meet the parents, see our breeding operation, and spend time with the puppies before making your decision.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-info reveal">
+    <div class="section-eyebrow">Get in Touch</div>
+    <h2 class="section-title">Ready to Meet<br>Your New Companion?</h2>
+    <div class="gold-divider"></div>
+
+    <div class="contact-detail">
+      <div class="contact-icon">📍</div>
+      <div>
+        <span class="contact-label">Location</span>
+        <span class="contact-value">Novi Sad, Serbia</span>
+      </div>
+    </div>
+
+    <div class="contact-detail">
+      <div class="contact-icon">✉</div>
+      <div>
+        <span class="contact-label">Email</span>
+        <span class="contact-value">balkenpuppyhub@gmail.com</span>
+      </div>
+    </div>
+
+    <div class="contact-detail">
+      <div class="contact-icon">🌐</div>
+      <div>
+        <span class="contact-label">Based in</span>
+        <span class="contact-value">Serbia · Shipping Worldwide</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form reveal">
+    <form action="https://formspree.io/f/maqdjpkn" method="POST" id="contactForm">
+      <div class="form-group">
+        <label for="name" class="form-label">Your Name *</label>
+        <input type="text" id="name" name="name" class="form-input" placeholder="John Doe" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email" class="form-label">Email Address *</label>
+        <input type="email" id="email" name="email" class="form-input" placeholder="john@example.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="location" class="form-label">Your Location</label>
+        <input type="text" id="location" name="location" class="form-input" placeholder="City, State, Country">
+      </div>
+
+      <div class="form-group">
+        <label for="message" class="form-label">Message *</label>
+        <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about yourself and what you're looking for..." required></textarea>
+      </div>
+
+      <button type="submit" class="form-submit">Send Inquiry</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">BalkanPuppyHub</div>
+  <div class="footer-text">Est. 2010 · Novi Sad, Serbia</div>
+  <div class="footer-tagline">European Excellence, American Standards</div>
+</footer>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const cursorFollower = document.getElementById('cursorFollower');
+
+document.addEventListener('mousemove', (e) => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+
+  setTimeout(() => {
+    cursorFollower.style.left = e.clientX - 15 + 'px';
+    cursorFollower.style.top = e.clientY - 15 + 'px';
+  }, 100);
+});
+
+// Scroll reveal
+const revealElements = document.querySelectorAll('.reveal');
+const revealOnScroll = () => {
+  revealElements.forEach(el => {
+    const elementTop = el.getBoundingClientRect().top;
+    const elementVisible = 120;
+    if (elementTop < window.innerHeight - elementVisible) {
+      el.classList.add('visible');
+    }
+  });
+};
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll();
+
+// FAQ toggle
+function toggleFaq(element) {
+  const isOpen = element.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.classList.remove('open');
+  });
+  if (!isOpen) {
+    element.classList.add('open');
+  }
+}
+
+// Formspree form handling
+const form = document.getElementById('contactForm');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = form.querySelector('.form-submit');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  const data = new FormData(form);
+  const response = await fetch(form.action, {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  });
+
+  if (response.ok) {
+    form.reset();
+    btn.textContent = 'Sent!';
+    setTimeout(() => {
+      btn.textContent = 'Send Inquiry';
+      btn.disabled = false;
+    }, 3000);
+  } else {
+    alert('Something went wrong. Please email us directly.');
+    btn.textContent = 'Send Inquiry';
+    btn.disabled = false;
+  }
+});
+
+// MODAL FUNCTIONALITY
+const puppyData = {
+  wanda: {
+    name: 'Female — Wanda',
+    subtitle: 'Ready June 2026 · KSS Registered',
+    images: [
+      'images/WhatsApp Image 2026-02-20 at 02.01.52.jpeg',
+      'images/WhatsApp Image 2026-02-20 at 02.01.521.jpeg',
+      'images/WhatsApp Image 2026-02-20 at 02.01.522.jpeg',
+      'images/WhatsApp Image 2026-02-20 at 02.01.523.jpeg'
+    ]
+  },
+  winner: {
+    name: 'Male — Winner',
+    subtitle: 'Ready June 2026 · KSS Registered',
+    images: [
+      'images/WhatsApp Image 2026-02-20 at 02.00.09.jpeg',
+      'images/WhatsApp Image 2026-02-20 at 02.00.091.jpeg',
+      'images/WhatsApp Image 2026-02-20 at 02.00.092.jpeg',
+      'images/WhatsApp Image 2026-02-20 at 02.00.10.jpeg'
+    ]
+  },
+  winnera: {
+    name: 'Female — Winnera',
+    subtitle: 'Ready June 2026 · KSS Registered',
+    images: [
+      'images/WhatsApp Image 2026-02-20 at 02.04.52.jpeg',
+      'images/WhatsApp Image 2026-02-20 at 02.04.521.jpeg',
+      'images/WhatsApp Image 2026-02-20 at 02.04.522.jpeg',
+      'images/WhatsApp Image 2026-02-20 at 02.04.524.jpeg'
+    ]
+  },
+  winny: {
+    name: 'Female — Winny',
+    subtitle: 'Ready June 2026 · KSS Registered',
+    images: [
+      'images/WhatsApp Image 2026-02-20 at 02.04.09.jpeg',
+      'images/WhatsApp Image 2026-02-20 at 02.04.091.jpeg',
+      'images/WhatsApp Image 2026-02-20 at 02.04.104.jpeg'
+    ]
+  },
+  winona: {
+    name: 'Female — Winona',
+    subtitle: 'Ready June 2026 · KSS Registered',
+    images: [
+      'images/WhatsApp Image 2026-02-20 at 02.03.24.jpeg',
+      'images/WhatsApp Image 2026-02-20 at 02.03.241.jpeg',
+      'images/WhatsApp Image 2026-02-20 at 02.03.243.jpeg',
+      'images/WhatsApp Image 2026-02-20 at 02.03.245.jpeg'
+    ]
+  },
+  winston: {
+    name: 'Male — Winston',
+    subtitle: 'Ready June 2026 · KSS Registered',
+    images: [
+      'images/WhatsApp Image 2026-02-20 at 02.01.03.jpeg',
+      'images/WhatsApp Image 2026-02-20 at 02.01.031.jpeg',
+      'images/WhatsApp Image 2026-02-20 at 02.01.04.jpeg',
+      'images/WhatsApp Image 2026-02-20 at 02.01.041.jpeg'
+    ]
+  },
+  winzy: {
+    name: 'Female — Winzy',
+    subtitle: 'Ready June 2026 · KSS Registered',
+    images: [
+      'images/WhatsApp Image 2026-02-20 at 02.02.41.jpeg',
+      'images/WhatsApp Image 2026-02-20 at 02.02.42.jpeg',
+      'images/WhatsApp Image 2026-02-20 at 02.02.421.jpeg',
+      'images/WhatsApp Image 2026-02-20 at 02.02.422.jpeg'
+    ]
+  }
+};
+
+function openModal(puppyId) {
+  const modal = document.getElementById('puppyModal');
+  const puppy = puppyData[puppyId];
+  
+  document.getElementById('modalTitle').textContent = puppy.name;
+  document.getElementById('modalSubtitle').textContent = puppy.subtitle;
+  
+  const gallery = document.getElementById('modalGallery');
+  gallery.innerHTML = '';
+  
+  puppy.images.forEach(imgSrc => {
+    const img = document.createElement('img');
+    img.src = imgSrc;
+    img.alt = puppy.name;
+    gallery.appendChild(img);
+  });
+  
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  const modal = document.getElementById('puppyModal');
+  modal.classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+// Close modal on background click
+document.getElementById('puppyModal').addEventListener('click', function(e) {
+  if (e.target === this) {
+    closeModal();
+  }
+});
+
+// Close modal on ESC key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeModal();
+  }
+});
+</script>
+
+</body>
+</html><div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-answer">
         <p>All breeding dogs undergo hip and elbow evaluations, genetic health panels, and full veterinary health checks. We provide complete documentation with every puppy.</p>
       </div>
     </div>
