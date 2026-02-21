@@ -722,7 +722,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 100px;
     align-items: start;
-    padding: 60px 60px;
+    padding: 60px 60px 20px;
   }
 
   .contact-info {}
@@ -833,7 +833,7 @@
   /* FOOTER */
   footer {
     background: var(--dark-mid);
-    padding: 60px;
+    padding: 30px 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1165,6 +1165,18 @@
   </div>
 </section>
 
+<!-- MODAL -->
+<div id="puppyModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div class="modal-header">
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <p class="modal-subtitle" id="modalSubtitle"></p>
+    </div>
+    <div class="modal-gallery" id="modalGallery"></div>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">BalkanPuppyHub</div>
@@ -1402,79 +1414,6 @@ document.addEventListener('keydown', function(e) {
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="contact-info reveal">
-    <div class="section-eyebrow">Get in Touch</div>
-    <h2 class="section-title">Begin Your Journey</h2>
-    <div class="gold-divider"></div>
-
-    <div class="contact-detail">
-      <div class="contact-icon">✦</div>
-      <div>
-        <span class="contact-label">Breeder</span>
-        <span class="contact-value">Dragomir Petrovic</span>
-      </div>
-    </div>
-
-    <div class="contact-detail">
-      <div class="contact-icon">⌖</div>
-      <div>
-        <span class="contact-label">Location</span>
-        <span class="contact-value">Novi Sad, Serbia</span>
-      </div>
-    </div>
-
-    <div class="contact-detail">
-      <div class="contact-icon">✉</div>
-      <div>
-        <span class="contact-label">Email</span>
-        <span class="contact-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ee87808881ae8c8f82858b809e9b9e9e97869b8cc08d8183">[email&#160;protected]</a></span>
-      </div>
-    </div>
-
-    <div class="contact-detail">
-      <div class="contact-icon">◈</div>
-      <div>
-        <span class="contact-label">Response Time</span>
-        <span class="contact-value">Within 24 hours</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="contact-form reveal">
-    <form id="contactForm" action="https://formspree.io/f/maqdjpkn" method="POST">
-    <div class="form-group">
-      <label class="form-label">Your Name</label>
-      <input type="text" name="name" class="form-input" placeholder="Full name" required>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Email Address</label>
-      <input type="email" name="email" class="form-input" placeholder="your@email.com" required>
-    </div>
-    <div class="form-group">
-      <label class="form-label">State / Location</label>
-      <input type="text" name="location" class="form-input" placeholder="e.g. Colorado, USA">
-    </div>
-    <div class="form-group">
-      <label class="form-label">Message</label>
-      <textarea name="message" class="form-textarea" placeholder="Tell us about yourself and what you're looking for in a dog..." required></textarea>
-    </div>
-    <button type="submit" class="form-submit">Send Inquiry</button>
-    <div id="formSuccess" style="display:none; margin-top:20px; color:var(--gold); font-size:0.8rem; letter-spacing:0.2em; text-align:center; text-transform:uppercase;">Thank you! We will respond within 24 hours.</div>
-    </form>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo">BalkanPuppyHub</div>
-  <div class="footer-text">
-    © 2025 BalkanPuppyHub · Novi Sad, Serbia<br>
-    All rights reserved
-  </div>
-  <div class="footer-tagline">Bred with passion.<br>Delivered with trust.</div>
-</footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Custom cursor
